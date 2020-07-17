@@ -18,7 +18,6 @@ function App() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -30,7 +29,7 @@ function App() {
           <Nav>
             <Nav.Link href="#deets">More deets</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+              Even more deets
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -39,8 +38,8 @@ function App() {
       <Container>
         <Row>
           <Col>
-          <h1 className="mt-5">The Air Quality App</h1>
-          <p className="lead">Welcome to the air quality app. Showing you pm25, pm10, o3, no2, so2, co pollutants in your area</p>
+          <h1 className="mt-5">Coming soon: The Air Quality App</h1>
+          <p className="lead">Welcome to the air quality app. Showing you pm25, pm10, o3, no2, so2, co pollutants in your area.</p>
           <p>Data from <a href="https://aqicn.org/">The World Air Quality Index Project Team</a>.</p>
           </Col>
         </Row>
