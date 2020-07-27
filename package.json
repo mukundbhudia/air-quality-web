@@ -23,7 +23,7 @@
     "build": "react-scripts build && cp build/index.html build/404.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "REACT_APP_API_URI=https://air-qual-api.herokuapp.com/ GENERATE_SOURCEMAP=false npm run build",
+    "predeploy": "REACT_APP_API_URI=https://air-qual-api.herokuapp.com GENERATE_SOURCEMAP=false npm run build",
     "webdeploy": "webdeploy/deploy.sh"
   },
   "eslintConfig": {
