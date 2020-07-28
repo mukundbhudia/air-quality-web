@@ -31,7 +31,23 @@ const HomePanel = () => {
   if (error) {
     return <div>Error accessing data.</div>
   } else if (!isLoaded) {
-    return <div>Loading...</div>
+    return (      
+    <>
+      <Col>
+        <Card className="text-center">
+          <Card.Body>
+            <Card.Title>Loading...</Card.Title>
+            <Card.Text>
+              Loading...
+            </Card.Text>
+            <Card.Text>
+              <small className="text-muted">Loading...</small>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
+    </>
+    )
   } else {
     return (
       <>
