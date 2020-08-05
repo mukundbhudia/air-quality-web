@@ -2,15 +2,13 @@ import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Container, Row, Col } from 'react-bootstrap'
 
 import HomePanel from './components/panels/HomePanel'
 import NavBarTop from './components/nav/NavBarTop'
 import Footer from './components/nav/Footer'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
 
@@ -18,7 +16,7 @@ function App() {
 
       <Container>
         <Row>
-          <Col>
+          <Col className="mb-4">
             <h1 className="mt-5">The Air Quality App</h1>
             <p className="lead">Welcome to the air quality app. Showing you pm25, pm10, o3, no2, so2, co pollutants in your area.</p>
           </Col>

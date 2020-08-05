@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+/* Desktop size */
+@media (max-width: 575.98px) { 
+
+}
+
+/* Mobile size */
+@media (max-width: 767.98px) { 
+  .aqi-panel {
+    height: 250px;
+  }
+}
+
+.aqi-good {
+  background-color: #00c853 !important;
+  color: #343a40 !important;
+}
+.aqi-moderate {
+  background-color: #fcd734 !important;
+  color: #343a40 !important;
+}
+.aqi-unhealthy-for-some {
+  background-color: #ffa000 !important;
+  color: #343a40 !important;
+}
+.aqi-unhealthy {
+  background-color: #e64a19 !important;
+  color: #343a40 !important;
+}
+.aqi-very-unhealthy {
+  background-color: #b71c1c !important;
+  color: #fff !important;
+}
+.aqi-hazardous {
+  background-color: #880e4f !important;
+  color: #fff !important;
+}

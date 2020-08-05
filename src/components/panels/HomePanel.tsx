@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import * as timeago from 'timeago.js'
 
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
+import { Col } from 'react-bootstrap'
 
 import { URI_ENDPOINT } from '../../endpointConnection'
+import SinglePanel from './SinglePanel'
 
 const setParams = (params: any): URLSearchParams => {
   const searchParams = new URLSearchParams()
@@ -13,7 +12,7 @@ const setParams = (params: any): URLSearchParams => {
   return searchParams
 }
 
-let allStations: Array<string> = ['5724', '9974', '5115', '5722', '7024', '1451']
+let allStations: Array<string> = ['5724', '9974', '12578', '1511'] // TODO: Add '5115', '5722', '7024', '1451', '8372', and more with formatting
 
 const HomePanel = () => {
   const [error, setError] = useState(null)
@@ -47,18 +46,8 @@ const HomePanel = () => {
       <>
         {allStations.map((_, i) => {            
           return (
-            <Col key={ i }>
-              <Card className="text-center">
-                <Card.Body>
-                  <Card.Title>Loading ...</Card.Title>
-                  <Card.Text>
-                    Air quality index: Loading ...
-                  </Card.Text>
-                  <Card.Text>
-                    <small className="text-muted">Last updated: Loading ...</small>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+            <Col key={ i } className="mb-3">
+              <SinglePanel data={ null }/>
             </Col>
           )})
         }
@@ -69,18 +58,8 @@ const HomePanel = () => {
       <>
         {items.map(item => {            
           return (
-            <Col key={ item.idx }>
-              <Card className="text-center">
-                <Card.Body>
-                  <Card.Title>{ item.city.name }</Card.Title>
-                  <Card.Text>
-                    Air quality index: { item.aqi }
-                  </Card.Text>
-                  <Card.Text>
-                    <small className="text-muted">Last updated: { timeago.format(new Date(item.time.iso)) }</small>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+            <Col key={ item.idx } className="mb-3">
+              <SinglePanel data={ item }/>
             </Col>
           )})
         }
