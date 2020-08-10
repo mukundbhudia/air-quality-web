@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 
 import { URI_ENDPOINT } from '../../endpointConnection'
+import './InputSearch.css'
 
 const InputSearch = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -53,6 +54,12 @@ const InputSearch = () => {
           <span>{option.login}</span> */}
         </>
       )}
+      onChange={(selected) => {
+        if (selected[0]) {
+          console.log(selected[0]);
+          // history.push(`/${selected[0].idKey}`)
+        }
+      }}
     />
   )
 }

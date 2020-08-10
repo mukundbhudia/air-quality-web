@@ -27,7 +27,7 @@ const NavBarTop = () => {
         <Form inline>
           {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
           <InputSearch/>
-          <Button variant="outline-info">Search</Button>
+          {/* <Button variant="outline-info">Search</Button> */}
         </Form>
       </Navbar.Collapse>
     </Navbar>
