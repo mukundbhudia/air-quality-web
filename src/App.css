@@ -38,8 +38,14 @@
 }
 
 /* Desktop size */
-@media (max-width: 575.98px) { 
+/* @media (max-width: 575.98px) { 
+  .aqi-panel {
+    height: 250px;
+  }
+} */
 
+.aqi-panel {
+  height: 180px;
 }
 
 /* Mobile size */
