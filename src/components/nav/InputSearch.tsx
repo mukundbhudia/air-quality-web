@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import {
+  useHistory,
+} from 'react-router-dom'
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 
 import { URI_ENDPOINT } from '../../endpointConnection'
@@ -23,6 +26,7 @@ const InputSearch = () => {
         setIsLoading(false)
       })
   }
+  let history = useHistory()
 
   return (
     <AsyncTypeahead
@@ -57,7 +61,7 @@ const InputSearch = () => {
       onChange={(selected) => {
         if (selected[0]) {
           console.log(selected[0]);
-          // history.push(`/${selected[0].idKey}`)
+          // history.push(`/${selected[0].id}`) // TODO: Fix missing history issue
         }
       }}
     />

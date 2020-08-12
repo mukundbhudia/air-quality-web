@@ -1,13 +1,19 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
-import HomePanel from './components/panels/HomePanel'
 import NavBarTop from './components/nav/NavBarTop'
-import ScaleLegendPanel from './components/panels/ScaleLegendPanel'
 import Footer from './components/nav/Footer'
+import HomePage from './components/pages/HomePage'
+import StationPage from './components/pages/StationPage'
+import NotFoundPage from './components/pages/NotFoundPage'
 
 const App = () => {
   return (
@@ -16,20 +22,19 @@ const App = () => {
       <NavBarTop/>
 
       <Container>
-        <Row>
-          <Col className="mb-4">
-            <h1 className="mt-5">The Air Quality App</h1>
-            <p className="lead">Welcome to the air quality app. Showing you pm25, pm10, o3, no2, so2, co pollutants in your area.</p>
-          </Col>
-        </Row>
-        <Row>
-          <HomePanel/>
-        </Row>
-        <Row>
-          <Col>
-            <ScaleLegendPanel/>
-          </Col>
-        </Row>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Switch>
+            <Route exact path="/">
+              <HomePage/>
+            </Route>
+            <Route path="/:id" children={
+              <StationPage/>
+            } />
+            <Route path="*">
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </Router>
       </Container>
 
       <Footer/>

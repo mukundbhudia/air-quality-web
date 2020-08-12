@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  Link,
+  // useRouteMatch,
+} from 'react-router-dom'
 import * as timeago from 'timeago.js'
 
 import { Card, Spinner } from 'react-bootstrap'
@@ -62,13 +66,13 @@ const SinglePanel = ({ data }: any) => {
     </Card>
   )
 
-  if (data) {
+  if (data) {    
     const panelStyle: PanelStyle = getPanelStyle(data.aqi)
     return (
       <Card
         className={`text-center aqi-panel ${ panelStyle.name }`}
       >
-        <Card.Header as="h5">{ data && data.city.name }</Card.Header>
+        <Card.Header as="h5"><Link to={ `${data.idx}` }>{ data && data.city.name }</Link></Card.Header>
         <Card.Body>
           <Card.Text>
             pm2: <strong>{ data && data.aqi }</strong> ({ panelStyle.message })
