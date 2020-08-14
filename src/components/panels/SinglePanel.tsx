@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Link,
-  // useRouteMatch,
 } from 'react-router-dom'
 import * as timeago from 'timeago.js'
 
@@ -72,10 +71,10 @@ const SinglePanel = ({ data }: any) => {
       <Card
         className={`text-center aqi-panel ${ panelStyle.name }`}
       >
-        <Card.Header as="h5"><Link to={ `${data.idx}` }>{ data && data.city.name }</Link></Card.Header>
+        <Card.Header as="h5"><Link to={ `/station/${data.idx}` }>{ data && data.city.name }</Link></Card.Header>
         <Card.Body>
           <Card.Text>
-            pm2: <strong>{ data && data.aqi }</strong> ({ panelStyle.message })
+            pm2.5: <strong>{ data && data.aqi }</strong> ({ panelStyle.message })
           </Card.Text>
           <Card.Text>
             <small className="text-muted">Last updated: { data && timeago.format(new Date(data.time.iso)) }</small>

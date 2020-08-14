@@ -7,7 +7,7 @@ const NotFoundPage = () => {
       <Row>
         <Col className="mb-4">
           <h1 className="mt-5">Sorry this page cannot be found</h1>
-          <p className="lead">Please go page a page and try again.</p>
+          <p className="lead">Please go back a page and try again.</p>
         </Col>
       </Row>
     </>

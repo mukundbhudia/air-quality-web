@@ -16,9 +16,7 @@ const setParams = (params: any): URLSearchParams => {
 
 const HomePage = () => {
   let { id } = useParams()
-  // console.log(id);
-
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<any>(null)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [items, setItems] = useState<Array<any>>([])
 
@@ -29,10 +27,13 @@ const HomePage = () => {
     })
     .then((result) => {
         setIsLoaded(true)
-        // console.log(result.data);
-        
-        const nonErrorStations = result && result.data && result.data.data
-        setItems([nonErrorStations])
+        if (result && result.data && result.data.data && !result.data.data.err) {
+          const nonErrorStations = result && result.data && result.data.data
+          setItems([nonErrorStations])
+        } else {
+          setIsLoaded(false)
+          setError(`Cannot find station with ID: ${id}`)
+        }
     })
     .catch((error) => {
       setIsLoaded(true)
@@ -43,7 +44,13 @@ const HomePage = () => {
   let content = null
 
   if (error) {
-    content = <div>Error accessing data.</div>
+    return (
+      <div>
+        <p>Error accessing data.</p>
+        <br/>
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
+    )
   } else if (!isLoaded) {
     content = (      
       <>
@@ -53,8 +60,6 @@ const HomePage = () => {
       </>
     )
   } else {
-    // console.log(items[0]);
-    
     content = (      
       <>
         <Col className="mb-3">
@@ -73,7 +78,7 @@ const HomePage = () => {
         </Col>
       </Row>
       <Row>
-      { content }
+        { content }
       </Row>
     </>
   )

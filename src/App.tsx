@@ -18,26 +18,23 @@ import NotFoundPage from './components/pages/NotFoundPage'
 const App = () => {
   return (
     <div className="App">
-
-      <NavBarTop/>
-
-      <Container>
-        <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <NavBarTop/>
+        <Container>
           <Switch>
             <Route exact path="/">
               <HomePage/>
             </Route>
-            <Route path="/:id" children={
+            <Route path="/station/:id" children={
               <StationPage/>
             } />
             <Route path="*">
               <NotFoundPage />
             </Route>
           </Switch>
-        </Router>
-      </Container>
-
-      <Footer/>
+        </Container>
+        <Footer/>
+      </Router>
     </div>
   )
 }

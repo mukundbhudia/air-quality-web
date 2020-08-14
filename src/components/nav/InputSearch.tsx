@@ -3,11 +3,13 @@ import {
   useHistory,
 } from 'react-router-dom'
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
+import { Badge } from 'react-bootstrap'
 
 import { URI_ENDPOINT } from '../../endpointConnection'
 import './InputSearch.css'
 
 const InputSearch = () => {
+  let history = useHistory()
   const [isLoading, setIsLoading] = useState(false)
   const [options, setOptions] = useState([])
 
@@ -26,17 +28,12 @@ const InputSearch = () => {
         setIsLoading(false)
       })
   }
-  let history = useHistory()
 
   return (
     <AsyncTypeahead
       id="async-example"
       isLoading={isLoading}
       labelKey={(option: any) => {
-        // let label = option.country
-        // if (option.province !== null) {
-        //   label = label + ` - ${option.province}`
-        // }
         return option.name
       }}
       minLength={3}
@@ -45,23 +42,12 @@ const InputSearch = () => {
       placeholder="Search for a city/region..."
       renderMenuItemChildren={(option: any, props: any) => (
         <>
-          <span>{ option.name } - AQI: { option.aqi }</span>
-          {/* <img
-            alt={option.login}
-            src={option.avatar_url}
-            style={{
-              height: '24px',
-              marginRight: '10px',
-              width: '24px',
-            }}
-          />
-          <span>{option.login}</span> */}
+          <div>{ option.name } - AQI: <Badge variant="light">{ option.aqi }</Badge></div>
         </>
       )}
       onChange={(selected) => {
         if (selected[0]) {
-          console.log(selected[0]);
-          // history.push(`/${selected[0].id}`) // TODO: Fix missing history issue
+          history.push(`/station/${selected[0].id}`)
         }
       }}
     />
