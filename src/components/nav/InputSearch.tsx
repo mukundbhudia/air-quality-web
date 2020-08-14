@@ -5,6 +5,7 @@ import {
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 import { Badge } from 'react-bootstrap'
 
+import { PanelStyle, getPanelStyle } from '../../modules/aqiGrading'
 import { URI_ENDPOINT } from '../../endpointConnection'
 import './InputSearch.css'
 
@@ -40,11 +41,14 @@ const InputSearch = () => {
       onSearch={handleSearch}
       options={options}
       placeholder="Search for a city/region..."
-      renderMenuItemChildren={(option: any, props: any) => (
-        <>
-          <div>{ option.name } - AQI: <Badge variant="light">{ option.aqi }</Badge></div>
-        </>
-      )}
+      renderMenuItemChildren={(option: any, props: any) => {
+        const panelStyle: PanelStyle = getPanelStyle(option.aqi)
+        return(
+          <>
+            <div>{ option.name } - AQI: <Badge className={panelStyle.name} variant="light">{ option.aqi }</Badge></div>
+          </>
+        )
+      }}
       onChange={(selected) => {
         if (selected[0]) {
           history.push(`/station/${selected[0].id}`)
