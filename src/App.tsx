@@ -18,7 +18,7 @@ import NotFoundPage from './components/pages/NotFoundPage'
 const App = () => {
   return (
     <div className="App">
-      <Router basename={`./${process.env.PUBLIC_URL}`}>
+      <Router basename={process.env.PUBLIC_URL}>
         <NavBarTop/>
         <Container>
           <Switch>
