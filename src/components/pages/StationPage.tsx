@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import SinglePanel from '../panels/SinglePanel'
 import { URI_ENDPOINT } from '../../endpointConnection'
+import AllAqiPanel from '../panels/AllAqiPanel'
 
 const setParams = (params: any): URLSearchParams => {
   const searchParams = new URLSearchParams()
@@ -42,6 +43,8 @@ const HomePage = () => {
   }, [id])
 
   let content = null
+  let cityInfo = null
+  let allAqi = null
 
   if (error) {
     return (
@@ -60,6 +63,8 @@ const HomePage = () => {
       </>
     )
   } else {
+    cityInfo = items[0] && items[0].city
+    allAqi = items[0] && items[0].iaqi
     content = (      
       <>
         <Col className="mb-3">
@@ -73,12 +78,16 @@ const HomePage = () => {
     <>
       <Row>
         <Col className="mb-4">
-          <h1 className="mt-5">{  items[0] && items[0].city.name }</h1>
-          <p className="lead">Welcome to the air quality app. Showing you pm25, pm10, o3, no2, so2, co pollutants in your area.</p>
+          <h1 className="mt-5">{ cityInfo && cityInfo.name }</h1>
         </Col>
       </Row>
       <Row>
         { content }
+      </Row>
+      <Row>
+        <Col className="mb-4">
+          <AllAqiPanel data={ allAqi }/>
+        </Col>
       </Row>
     </>
   )
