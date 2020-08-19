@@ -4,6 +4,13 @@ What's the air around you like?
 React, TypeScript web application to show you pm25, pm10, o3, no2, so2, co pollutants in your area.
 Data from [The Air Quality index](http://aqicn.org).
 
+![Home page for the Air Quality App](https://github.com/mukundbhudia/air-quality-web/raw/master/screenshots/home-page.png)
+
+## Prerequisites
+* Node v14.x.x
+* NPM v6.x.x
+* air-quality-web needs [air-quality-api](https://github.com/mukundbhudia/air-quality-api) to be running.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,3 +39,6 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Thanks
+* To [The Air Quality index](http://aqicn.org) for the hard work in collating the data from around the world and providing the API.
