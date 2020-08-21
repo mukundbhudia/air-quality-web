@@ -15,7 +15,7 @@ const setParams = (params: any): URLSearchParams => {
   return searchParams
 }
 
-const HomePage = () => {
+const StationPage = () => {
   let { id } = useParams()
   const [error, setError] = useState<any>(null)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -94,4 +94,4 @@ const HomePage = () => {
 
 }
 
-export default HomePage
+export default StationPage

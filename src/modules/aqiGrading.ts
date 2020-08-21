@@ -7,6 +7,22 @@ enum aqiScale {
   Hazardous = "Hazardous",
 }
 
+export enum api {
+  co = "Carbon Monoxide",
+  no2 = "Nitrogen Dioxide",
+  o3 = "Ozone",
+  pm10 = "Respirable particulate matter",
+  pm25 = "Fine particulate matter",
+  so2 = "Sulphur Dioxide",
+}
+
+export enum conditions {
+  t = "Temperature",
+  w = "Wind",
+  h = "Humidity",
+  p = "Air pressure",
+}
+
 const calculatePercentage = (aqi: number): number => {
   return Math.ceil((aqi/300)*100)
 }
@@ -19,7 +35,7 @@ export interface PanelStyle {
 }
 
 export const getPanelStyle = (aqi: number): PanelStyle => {
-  let panelClass = {
+  let panelClass: PanelStyle = {
     name: '',
     textColour: '',
     message: '',
