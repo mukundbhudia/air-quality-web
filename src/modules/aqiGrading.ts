@@ -7,20 +7,28 @@ enum aqiScale {
   Hazardous = "Hazardous",
 }
 
-export enum api {
-  co = "Carbon Monoxide",
-  no2 = "Nitrogen Dioxide",
-  o3 = "Ozone",
-  pm10 = "Respirable particulate matter",
-  pm25 = "Fine particulate matter",
-  so2 = "Sulphur Dioxide",
+interface Pollutants {
+  [key: string]: string,
 }
 
-export enum conditions {
-  t = "Temperature",
-  w = "Wind",
-  h = "Humidity",
-  p = "Air pressure",
+export const pollutants: Pollutants = {
+  co: "Carbon Monoxide",
+  no2: "Nitrogen Dioxide",
+  o3: "Ozone",
+  pm10: "Respirable particulate matter",
+  pm25: "Fine particulate matter",
+  so2: "Sulphur Dioxide",
+}
+
+interface Conditions {
+  [key: string]: string,
+}
+
+export const conditions: Conditions = {
+  t: "Temperature",
+  w: "Wind",
+  h: "Humidity",
+  p: "Air pressure",
 }
 
 const calculatePercentage = (aqi: number): number => {
