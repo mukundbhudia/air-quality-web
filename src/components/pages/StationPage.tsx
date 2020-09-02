@@ -16,7 +16,9 @@ const setParams = (params: any): URLSearchParams => {
 }
 
 const StationPage = () => {
-  let { id } = useParams()
+  const params: any = useParams()
+  const id: number = params.id
+
   const [error, setError] = useState<any>(null)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
   const [items, setItems] = useState<Array<any>>([])
@@ -91,7 +93,6 @@ const StationPage = () => {
       </Row>
     </>
   )
-
 }
 
 export default StationPage
