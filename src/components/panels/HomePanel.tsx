@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import { Col } from 'react-bootstrap'
 
-import { URI_ENDPOINT } from '../../endpointConnection'
+import { URI_ENDPOINT, fetchStationData } from '../../endpointConnection'
 import SinglePanel from './SinglePanel'
 
 const setParams = (params: any): URLSearchParams => {
@@ -21,22 +20,13 @@ const HomePanel = () => {
 
   useEffect(() => {
     const params = setParams( { stnIds: allStations } )
-    axios(`${URI_ENDPOINT}/getMultipleStations/`, {
-      params
-    })
-    .then((result) => {
-        setIsLoaded(true)
-        const nonErrorStations = result &&
-          result.data &&
-          result.data.data.filter((item: any) => {
-            return !('err' in item)
-          })
-        setItems(nonErrorStations)
-    })
-    .catch((error) => {
-      setIsLoaded(true)
-      setError(error)
-    })
+    fetchStationData(
+      `${URI_ENDPOINT}/getMultipleStations/`,
+      params,
+      setIsLoaded,
+      setItems,
+      setError,
+    )
   }, [])
 
   if (error) {

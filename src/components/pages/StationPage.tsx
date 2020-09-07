@@ -3,10 +3,9 @@ import {
   useParams
 } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
-import axios from 'axios'
 
 import SinglePanel from '../panels/SinglePanel'
-import { URI_ENDPOINT } from '../../endpointConnection'
+import { URI_ENDPOINT, fetchStationData } from '../../endpointConnection'
 import AllAqiPanel from '../panels/AllAqiPanel'
 
 const setParams = (params: any): URLSearchParams => {
@@ -25,23 +24,13 @@ const StationPage = () => {
 
   useEffect(() => {
     const params = setParams( { stnIds: [id] } )
-    axios(`${URI_ENDPOINT}/getStation/`, {
-      params
-    })
-    .then((result) => {
-        setIsLoaded(true)
-        if (result && result.data && result.data.data && !result.data.data.err) {
-          const nonErrorStations = result && result.data && result.data.data
-          setItems([nonErrorStations])
-        } else {
-          setIsLoaded(false)
-          setError(`Cannot find station with ID: ${id}`)
-        }
-    })
-    .catch((error) => {
-      setIsLoaded(true)
-      setError(error)
-    })
+    fetchStationData(
+      `${URI_ENDPOINT}/getStation/`,
+      params,
+      setIsLoaded,
+      setItems,
+      setError,
+    )
   }, [id])
 
   let content = null

@@ -11,11 +11,11 @@ import './InputSearch.css'
 
 const InputSearch = () => {
   let history = useHistory()
-  const [isLoading, setIsLoading] = useState(false)
-  const [options, setOptions] = useState([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [options, setOptions] = useState<Array<any>>([])
 
   const handleSearch = (query: any) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     fetch(`${URI_ENDPOINT}/search?q=${query}`)
       .then((response) => response.json())

@@ -4,8 +4,8 @@ import './nav.css'
 import { URI_ENDPOINT } from '../../../src/endpointConnection'
 
 const NavBarTop = () => {
-  const [error, setError] = useState(null)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [error, setError] = useState<any>(null)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     fetch(URI_ENDPOINT)
