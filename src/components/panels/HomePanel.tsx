@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap'
 
 import { URI_ENDPOINT, fetchStationData } from '../../endpointConnection'
 import SinglePanel from './SinglePanel'
+import ErrorPanel from './ErrorPanel'
 
 const setParams = (params: any): URLSearchParams => {
   const searchParams = new URLSearchParams()
@@ -30,7 +31,7 @@ const HomePanel = () => {
   }, [])
 
   if (error) {
-    return <div>Error accessing data.</div>
+    return <ErrorPanel error={error} />
   } else if (!isLoaded) {
     return (      
       <>

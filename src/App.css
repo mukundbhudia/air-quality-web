@@ -37,6 +37,17 @@
   }
 }
 
+.error {
+  margin-bottom: 0;
+  background-color: #f8f9fa !important;
+  text-align: left;
+  margin: 10px;
+}
+
+.error-border {
+  border-color: #d79ba0 !important;
+}
+
 /* Desktop size */
 /* @media (max-width: 575.98px) { 
   .aqi-panel {

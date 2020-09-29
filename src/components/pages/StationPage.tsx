@@ -7,6 +7,7 @@ import { Row, Col } from 'react-bootstrap'
 import SinglePanel from '../panels/SinglePanel'
 import { URI_ENDPOINT, fetchStationData } from '../../endpointConnection'
 import AllAqiPanel from '../panels/AllAqiPanel'
+import ErrorPage from '../pages/ErrorPage'
 
 const setParams = (params: any): URLSearchParams => {
   const searchParams = new URLSearchParams()
@@ -38,13 +39,7 @@ const StationPage = () => {
   let allAqi = null
 
   if (error) {
-    return (
-      <div>
-        <p>Error accessing data.</p>
-        <br/>
-        <pre>{JSON.stringify(error, null, 2)}</pre>
-      </div>
-    )
+    return <ErrorPage error={error} />
   } else if (!isLoaded) {
     content = (      
       <>
